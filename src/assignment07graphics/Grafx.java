@@ -76,20 +76,19 @@ public class Grafx {
 			System.out.println("\tBlurring the edges of image..");
 			int unchangedLength = w % pix;
 			int unchangedLengthPixelNumber = w - unchangedLength;
-			for (int i = unchangedLengthPixelNumber; i < w ; i+=unchangedLength) {
-				for (int j = 0; j <= h - pix; j+=pix) {
-					c = new Color((image.getRGB(i, j)));
-					int red = c.getRed();
-					int green = c.getGreen();
-					int blue = c.getBlue();
-					Color newColor = new Color(red, green, blue);
-					
-					for (int k = 0; k < unchangedLength; k++) {
-						for (int m = 0; m < pix; m++) {
-							PixelatedImage.setRGB(i+k, j+m, newColor.getRGB());
-						}
-					}		
-				}
+			int i = unchangedLengthPixelNumber;
+			for (int j = 0; j <= h - pix; j+=pix) {
+				c = new Color((image.getRGB(i, j)));
+				int red = c.getRed();
+				int green = c.getGreen();
+				int blue = c.getBlue();
+				Color newColor = new Color(red, green, blue);
+				
+				for (int k = 0; k < unchangedLength; k++) {
+					for (int m = 0; m < pix; m++) {
+						PixelatedImage.setRGB(i+k, j+m, newColor.getRGB());
+					}
+				}		
 			}
 		}
 		else {
@@ -102,20 +101,19 @@ public class Grafx {
 			int unchangedLength = h % pix; 
 			int unchangedLengthPixelNumber = h - unchangedLength;
 			for (int i = 0; i < w - pix; i+=pix) {
-				for (int j = unchangedLengthPixelNumber; j < h; j+=unchangedLength) {
-					c = new Color((image.getRGB(i, j)));
-					int red = c.getRed();
-					int green = c.getGreen();
-					int blue = c.getBlue();
-					Color newColor = new Color(red, green, blue);
-					
-					for (int k = 0; k < pix; k++) {
-						for (int m = 0; m < unchangedLength; m++) {
-							PixelatedImage.setRGB(i+k, j+m, newColor.getRGB());
-						}
+				int j = unchangedLengthPixelNumber;
+				c = new Color((image.getRGB(i, j)));
+				int red = c.getRed();
+				int green = c.getGreen();
+				int blue = c.getBlue();
+				Color newColor = new Color(red, green, blue);
+				
+				for (int k = 0; k < pix; k++) {
+					for (int m = 0; m < unchangedLength; m++) {
+						PixelatedImage.setRGB(i+k, j+m, newColor.getRGB());
 					}
-						
 				}
+					
 			}
 		} else {
 			System.out.println("Pixelated square ("+ pix +"x"+pix+") does match height of image ("+h+" pixels)");
