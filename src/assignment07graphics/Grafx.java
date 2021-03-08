@@ -2,13 +2,10 @@ package assignment07graphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import javax.swing.JFileChooser;
-import java.io.File;
 
 public class Grafx {
 
@@ -125,6 +122,7 @@ public class Grafx {
 		}
 		String pixelatedSize = pix + "pixels";
 		saveImage(PixelatedImage, filename, "Pixelated",pixelatedSize);
+		kbd.close();
 	}
 	
 	public static void saveImage(BufferedImage image, String filename, String FilenameModifier) throws Exception {
